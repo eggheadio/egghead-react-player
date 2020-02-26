@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "CookPete",
+      "name": "Pete Cook",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1926029?v=4",
+      "profile": "http://cookpete.com",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "egghead-react-player",
+  "projectOwner": "eggheadio",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
