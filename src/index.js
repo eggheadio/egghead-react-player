@@ -1,3 +1,3 @@
 import ReactPlayer from './ReactPlayer/index'
 
-export {ReactPlayer}
+export default ReactPlayer
