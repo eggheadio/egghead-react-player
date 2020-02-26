@@ -13,7 +13,7 @@ npm i egghead-react-player
 import ReactPlayer from "egghead-react-player"
 ```
 
-Push to bump version and release to npm.
+Push to bump version and release to npm!!!
 
 ## Contributors ✨
 
