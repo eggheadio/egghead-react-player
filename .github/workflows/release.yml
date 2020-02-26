@@ -1,4 +1,4 @@
-name: Create Release
+name: "Create Release"
 
 on:
   push:
@@ -7,12 +7,12 @@ on:
 
 jobs:
   create-release:
-    name: Create Release
+    name: "Create Release"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@master
-      - name: Create Release
+      - name: "Create Release"
         id: create_release
         uses: actions/create-release@v1
         env:
