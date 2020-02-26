@@ -3,10 +3,10 @@ name: "Create Release"
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
-  create-release:
+  build:
     name: "Create Release"
     runs-on: ubuntu-latest
     steps:
