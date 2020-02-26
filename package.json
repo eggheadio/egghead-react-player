@@ -1,6 +1,6 @@
 {
   "name": "egghead-react-player",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "description": "",
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",
