@@ -1,3 +1,4 @@
+import React from 'react'
 import useInterval from './useInterval'
 
 const progress = ({url, player, onProgress, prevLoadedRef, prevPlayedRef}) => {
