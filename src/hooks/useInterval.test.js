@@ -11,7 +11,7 @@ test('useInterval', done => {
   const callback = called => {
     // because it's async, Jest throws errors so this traps it and makes it sensible
     try {
-      expect(called).toBe(false)
+      expect(called).toBe(true)
       done()
     } catch (error) {
       done(error)

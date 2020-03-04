@@ -16,7 +16,8 @@
     "start": "npm run build -- -w",
     "travis-deploy-once": "npx travis-deploy-once",
     "is-build-es5": "npx es-check es5 './build/**/*.!(esm).js'",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

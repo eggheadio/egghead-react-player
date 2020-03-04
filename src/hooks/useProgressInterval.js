@@ -1,32 +1,41 @@
 import React from 'react'
 import useInterval from './useInterval'
 
-const progress = ({url, player, onProgress, prevLoadedRef, prevPlayedRef}) => {
-  if (url && player) {
-    const loaded = player.getFractionLoaded() || 0
-    const played = player.getFractionPlayed() || 0
-    const duration = player.getDuration()
-    const progress = {}
-    const prevLoaded = prevLoadedRef.current
-    const prevPlayed = prevPlayedRef.current
-    if (loaded !== prevLoaded) {
-      progress.loaded = loaded
-      if (duration) {
-        progress.loadedSeconds = progress.loaded * duration
-      }
+const progress = ({prevLoadedRef, prevPlayedRef, player, onProgress}) => {
+  const prevLoaded = prevLoadedRef.current
+  const prevPlayed = prevPlayedRef.current
+  const {loaded, played} = calculateProgress({
+    prevLoaded,
+    prevPlayed,
+    player,
+    onProgress,
+  })
+  prevLoadedRef.current = loaded
+  prevPlayedRef.current = played
+}
+
+const calculateProgress = ({player, onProgress, prevLoaded, prevPlayed}) => {
+  const loaded = player.getFractionLoaded() || 0
+  const played = player.getFractionPlayed() || 0
+  const duration = player.getDuration()
+  const progress = {}
+
+  if (loaded !== prevLoaded) {
+    progress.loaded = loaded
+    if (duration) {
+      progress.loadedSeconds = progress.loaded * duration
     }
-    if (played !== prevPlayed) {
-      progress.played = played
-      if (duration) {
-        progress.playedSeconds = progress.played * duration
-      }
-    }
-    if (progress.loaded || progress.played) {
-      onProgress(progress)
-    }
-    prevLoadedRef.current = loaded
-    prevPlayedRef.current = played
   }
+  if (played !== prevPlayed) {
+    progress.played = played
+    if (duration) {
+      progress.playedSeconds = progress.played * duration
+    }
+  }
+  if (progress.loaded || progress.played) {
+    onProgress(progress)
+  }
+  return {loaded, played}
 }
 
 const useProgressInterval = ({
@@ -37,18 +46,16 @@ const useProgressInterval = ({
 }) => {
   const prevLoadedRef = React.useRef(null)
   const prevPlayedRef = React.useRef(null)
-
-  useInterval(
-    () =>
+  useInterval(() => {
+    if (url && playerRef.current) {
       progress({
         onProgress,
-        url,
         player: playerRef.current,
         prevLoadedRef,
         prevPlayedRef,
-      }),
-    intervalTimeMS,
-  )
+      })
+    }
+  }, intervalTimeMS)
 }
 
 export default useProgressInterval
